@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    private Rigidbody2D _rigidBody2D;
+    private Rigidbody2D _rigidBody2D;    
+    [SerializeField] private float _speed = 10;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidBody2D = GetComponent<Rigidbody2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -29,6 +24,6 @@ public class Controller : MonoBehaviour
     {
         Vector2 movement = new( x: Input.GetAxis("Horizontal"), y: Input.GetAxis("Vertical"));
 
-        _rigidBody2D.MovePosition(_rigidBody2D.position + movement * Time.deltaTime);
+        _rigidBody2D.MovePosition(_rigidBody2D.position + movement * _speed * Time.fixedDeltaTime);
     }
 }

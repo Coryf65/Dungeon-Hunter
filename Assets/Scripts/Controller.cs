@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    private Rigidbody2D _rigidBody2D;    
     [SerializeField] private float _speed = 10;
+    
+    private Vector2 _currentMovement { get; set; }
+    private Rigidbody2D _rigidBody2D;
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +20,19 @@ public class Controller : MonoBehaviour
         HandleMovement();
     }
 
-    // Character Movement
-    // 2D
+    // Move the Player character
     void HandleMovement()
     {
-        Vector2 movement = new( x: Input.GetAxis("Horizontal"), y: Input.GetAxis("Vertical"));
+        Vector2 currentMovePosition = _rigidBody2D.position + _currentMovement * Time.fixedDeltaTime;
+        _rigidBody2D.MovePosition(currentMovePosition);
+    }
 
-        _rigidBody2D.MovePosition(_rigidBody2D.position + movement * _speed * Time.fixedDeltaTime);
+    /// <summary>
+    /// Set the players movement position
+    /// </summary>
+    /// <param name="newPosition">value to set the players movent to</param>
+    public void SetMovement(Vector2 newPosition)
+    {
+        _currentMovement = newPosition;
     }
 }

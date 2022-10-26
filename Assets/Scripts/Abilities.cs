@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Abilities : MonoBehaviour
 {
+    protected float horizontalInput;
+    protected float verticalInput;
+
+    protected Controller controller;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        
+        controller = GetComponent<Controller>();
     }
 
     // Update is called once per frame
-    private void Update()
+    void Update()
     {
-        
+        HandleAbility();
     }
 
     /// <summary>
@@ -22,14 +27,14 @@ public class Abilities : MonoBehaviour
     /// </summary>
     protected virtual void HandleAbility()
     {
-        
+        InternalInput();
     }
 
     /// <summary>
     /// Get input to perform actions
     /// get buttons from player
     /// </summary>
-    private void HandleInput()
+    protected virtual void HandleInput()
     {
         
     }
@@ -38,8 +43,9 @@ public class Abilities : MonoBehaviour
     /// Get the input to control our character
     /// x and y movements
     /// </summary>
-    private void InternalInput()
+    protected virtual void InternalInput()
     {
-
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
     }
 }

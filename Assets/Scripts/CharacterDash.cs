@@ -29,7 +29,9 @@ public class CharacterDash : CharacterComponent
         {
             if (_dashTimer < _dashDuration)
             {
-                _newPosition = Vector2.Lerp(_dashOrigin, _dashDestination, _dashTimer / _dashDuration); 
+                _newPosition = Vector2.Lerp(_dashOrigin, _dashDestination, _dashTimer / _dashDuration);
+                controller.MovePosition(_newPosition);
+                _dashTimer = Time.deltaTime;
             } 
             else
             {
@@ -42,6 +44,7 @@ public class CharacterDash : CharacterComponent
     {
         _isDashing = true;
         _dashTimer = 0f;
+        controller.NormalMovement = false;
         _dashOrigin = transform.position;
 
         _dashDestination = transform.position + (Vector3)controller.CurrentMovement.normalized * _dashDistance;

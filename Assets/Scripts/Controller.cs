@@ -4,25 +4,44 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {    
-    private Vector2 _currentMovement { get; set; }
+    public Vector2 CurrentMovement { get; set; }
+    public bool NormalMovement { get; set; }
+
     private Rigidbody2D _rigidBody2D;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// Start is called before the first frame update
+    /// </summary>
     void Start()
     {
+        NormalMovement = true;
         _rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (NormalMovement)
+        {
+            HandleMovement();
+        }
     }
 
-    // Move the Player character
-    void HandleMovement()
+    /// <summary>
+    /// Move the Player character
+    /// </summary>
+    private void HandleMovement()
     {
-        Vector2 currentMovePosition = _rigidBody2D.position + _currentMovement * Time.fixedDeltaTime;
+        Vector2 currentMovePosition = _rigidBody2D.position + CurrentMovement * Time.fixedDeltaTime;
         _rigidBody2D.MovePosition(currentMovePosition);
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="newPosition"></param>
+    public void MovePosition(Vector2 newPosition)
+    {
+        _rigidBody2D.MovePosition(newPosition);
     }
 
     /// <summary>
@@ -31,6 +50,6 @@ public class Controller : MonoBehaviour
     /// <param name="newPosition">value to set the players movent to</param>
     public void SetMovement(Vector2 newPosition)
     {
-        _currentMovement = newPosition;
+        CurrentMovement = newPosition;
     }
 }

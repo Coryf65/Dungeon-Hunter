@@ -5,29 +5,38 @@ using UnityEngine;
 /// <summary>
 /// 
 /// </summary>
-public class Movement : Abilities
+public class CharacterMovement : CharacterComponent
 {
     [SerializeField]
     private float _walkSpeed = 6f;
 
-    public float WalkMovementSpeed { get; set; }
+    public float MovementSpeed { get; set; }
 
     protected override void Start()
     {
         base.Start();
-        WalkMovementSpeed = _walkSpeed;
+        MovementSpeed = _walkSpeed;
     }
 
     protected override void HandleAbility()
     {
         base.HandleAbility();
+        MoveCharacter();
     }
 
     private void MoveCharacter()
     {
         Vector2 movement = new(horizontalInput, verticalInput);
         Vector2 normalizedMovement = movement.normalized;
-        Vector2 movementSpeed = movement * _walkSpeed;
+        Vector2 movementSpeed = movement * MovementSpeed;
         controller.SetMovement(movementSpeed);
+    }
+
+    /// <summary>
+    /// Reset the movemetn speed back to the original amount
+    /// </summary>
+    public void ResetMovementSpeed()
+    {
+        MovementSpeed = _walkSpeed;
     }
 }

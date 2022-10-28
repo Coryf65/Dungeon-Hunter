@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
-{
-    [SerializeField] private float _speed = 10;
-    
+{    
     private Vector2 _currentMovement { get; set; }
     private Rigidbody2D _rigidBody2D;
 

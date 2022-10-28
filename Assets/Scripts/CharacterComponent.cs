@@ -2,17 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Abilities : MonoBehaviour
+public class CharacterComponent : MonoBehaviour
 {
     protected float horizontalInput;
     protected float verticalInput;
 
     protected Controller controller;
+    protected CharacterMovement characterMovement;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         controller = GetComponent<Controller>();
+        characterMovement = GetComponent<CharacterMovement>();
     }
 
     // Update is called once per frame
@@ -28,6 +30,7 @@ public class Abilities : MonoBehaviour
     protected virtual void HandleAbility()
     {
         InternalInput();
+        HandleInput();
     }
 
     /// <summary>
@@ -40,12 +43,14 @@ public class Abilities : MonoBehaviour
     }
 
     /// <summary>
-    /// Get the input to control our character
+    /// Get the input to control our character, things that won't change
     /// x and y movements
     /// </summary>
     protected virtual void InternalInput()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
+        // GetAxis() applies smoothing
+        // GetAxisRaw() is the raw input
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        verticalInput = Input.GetAxisRaw("Vertical");
     }
 }

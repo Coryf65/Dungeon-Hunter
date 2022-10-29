@@ -31,7 +31,7 @@ public class CharacterDash : CharacterComponent
             {
                 _newPosition = Vector2.Lerp(_dashOrigin, _dashDestination, _dashTimer / _dashDuration);
                 controller.MovePosition(_newPosition);
-                _dashTimer = Time.deltaTime;
+                _dashTimer += Time.deltaTime;
             } 
             else
             {
@@ -41,7 +41,8 @@ public class CharacterDash : CharacterComponent
     }
 
     private void Dash()
-    {
+    {      
+        Debug.Log("Dashing");
         _isDashing = true;
         _dashTimer = 0f;
         controller.NormalMovement = false;
@@ -53,5 +54,6 @@ public class CharacterDash : CharacterComponent
     private void StopDash()
     {
         _isDashing = false;
+        controller.NormalMovement = true;
     }
 }

@@ -9,6 +9,7 @@ public class CharacterMovement : CharacterComponent
 {
     [SerializeField]
     private float _walkSpeed = 6f;
+    private readonly int _movingTrigger = Animator.StringToHash("IsMoving");
 
     public float MovementSpeed { get; set; }
 
@@ -49,11 +50,11 @@ public class CharacterMovement : CharacterComponent
     {
         if (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f)
         {
-            animator.SetBool("IsMoving", true);
+            animator.SetBool(_movingTrigger, true);
         }
         else
         {
-            animator.SetBool("IsMoving", false);
+            animator.SetBool(_movingTrigger, false);
         }
     }
 }

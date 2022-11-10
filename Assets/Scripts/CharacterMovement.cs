@@ -12,6 +12,7 @@ public class CharacterMovement : CharacterComponent
 
     public float MovementSpeed { get; set; }
 
+
     protected override void Start()
     {
         base.Start();
@@ -22,6 +23,7 @@ public class CharacterMovement : CharacterComponent
     {
         base.HandleAbility();
         MoveCharacter();
+        UpdateAnimations();
     }
 
     private void MoveCharacter()
@@ -38,5 +40,20 @@ public class CharacterMovement : CharacterComponent
     public void ResetMovementSpeed()
     {
         MovementSpeed = _walkSpeed;
+    }
+
+    /// <summary>
+    /// Handles changing of our aniamtions
+    /// </summary>
+    private void UpdateAnimations()
+    {
+        if (Mathf.Abs(horizontalInput) > 0.1f || Mathf.Abs(verticalInput) > 0.1f)
+        {
+            animator.SetBool("IsMoving", true);
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
     }
 }

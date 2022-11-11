@@ -29,8 +29,13 @@ public class Health : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         CurrentHealth = _startingHealth;
+
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
     }
 
+    /// <summary>
+    /// Runs every frame call
+    /// </summary>
     private void Update()
     {
         // testing
@@ -60,6 +65,7 @@ public class Health : MonoBehaviour
         }
 
         CurrentHealth -= damage;
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
 
         // no health left after damage
         if (CurrentHealth <= 0)
@@ -85,7 +91,6 @@ public class Health : MonoBehaviour
         {
             CleanupObject();
         }
-        Debug.Log("current health = " + CurrentHealth);
     }
 
     /// <summary>
@@ -104,7 +109,7 @@ public class Health : MonoBehaviour
         }
         
         gameObject.SetActive(true);
-        Debug.Log("current health = " + CurrentHealth);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
     }
 
     /// <summary>

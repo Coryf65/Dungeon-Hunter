@@ -1,21 +1,27 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : Singleton<UIManager>
 {
-    // Start is called before the first frame update
-    void Start()
-    {
+    [Header("Settings")]
+    [SerializeField] private Image _healthBar;
 
+    private float _currentHealth;
+    private float _maxHealth;
+
+    private void Update()
+    {
+        UpdateUI();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateHealth(float currentHealth, float maxHealth)
     {
-
+        _currentHealth = currentHealth;
+        _maxHealth = maxHealth;
     }
 
-    public void DoSomething()
+    private void UpdateUI()
     {
-        Debug.Log("Hello from UI Manager classs!");
+        _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _currentHealth / _maxHealth, 10f * Time.deltaTime);
     }
 }

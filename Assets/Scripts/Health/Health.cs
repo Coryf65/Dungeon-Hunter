@@ -1,14 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.TextCore.Text;
 
 public class Health : MonoBehaviour
 {
     private Character _character;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
-    
+
     [Header("Health")]
     [SerializeField] private float _startingHealth = 10f;
     [SerializeField] private float _maxHealth = 10f;
@@ -28,15 +25,21 @@ public class Health : MonoBehaviour
     {
         _character = GetComponent<Character>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider= GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
         CurrentHealth = _startingHealth;
     }
 
     private void Update()
     {
+        // testing
         if (Input.GetKeyDown(key: KeyCode.L))
         {
             TakeDamage(1);
+        }
+
+        if (Input.GetKeyDown(key: KeyCode.P))
+        {
+            Revive();
         }
     }
 
@@ -46,6 +49,8 @@ public class Health : MonoBehaviour
     /// <param name="damage">amount of damage done</param>
     public void TakeDamage(int damage)
     {
+        Debug.Log("current health = " + CurrentHealth);
+
         // check if we have any health
         if (CurrentHealth <= 0)
         {
@@ -68,22 +73,33 @@ public class Health : MonoBehaviour
     {
         if (_character is not null)
         {
-            _collider.enabled= false;
-            _spriteRenderer.enabled= false;
+            _collider.enabled = false;
+            _spriteRenderer.enabled = false;
+            _IsDestroyed = true;
         }
 
         if (_IsDestroyed)
         {
             CleanupObject();
         }
+        Debug.Log("current health = " + CurrentHealth);
     }
 
     /// <summary>
     /// Revive this object
     /// </summary>
     public void Revive()
-    {
-
+    {        
+        if (_character is not null)
+        {
+            _IsDestroyed = false;
+            CurrentHealth = _startingHealth;
+            _collider.enabled = true;
+            _spriteRenderer.enabled = true;
+        }
+        
+        gameObject.SetActive(true);
+        Debug.Log("current health = " + CurrentHealth);
     }
 
     /// <summary>

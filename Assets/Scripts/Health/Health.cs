@@ -3,6 +3,7 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     private Character _character;
+    private Controller _characterController;
     private Collider2D _collider;
     private SpriteRenderer _spriteRenderer;
 
@@ -24,6 +25,7 @@ public class Health : MonoBehaviour
     private void Awake()
     {
         _character = GetComponent<Character>();
+        _characterController = GetComponent<Controller>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
         CurrentHealth = _startingHealth;
@@ -75,6 +77,7 @@ public class Health : MonoBehaviour
         {
             _collider.enabled = false;
             _spriteRenderer.enabled = false;
+            _characterController.enabled = false;
             _IsDestroyed = true;
         }
 
@@ -94,8 +97,10 @@ public class Health : MonoBehaviour
         {
             _IsDestroyed = false;
             CurrentHealth = _startingHealth;
+
             _collider.enabled = true;
             _spriteRenderer.enabled = true;
+            _characterController.enabled = true;
         }
         
         gameObject.SetActive(true);

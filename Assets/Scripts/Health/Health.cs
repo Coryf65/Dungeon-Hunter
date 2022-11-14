@@ -5,19 +5,25 @@ public class Health : MonoBehaviour
     private Character _character;
     private Controller _characterController;
     private Collider2D _collider;
-    private SpriteRenderer _spriteRenderer;
+    private SpriteRenderer _spriteRenderer;    
 
     [Header("Health")]
     [SerializeField] private float _startingHealth = 10f;
     [SerializeField] private float _maxHealth = 10f;
 
-    [Header("Settings")]
-    [SerializeField] private bool _IsDestroyed = false;
+    [Header("Shield")]
+    [SerializeField] private float _startingShield = 5f;
+    [SerializeField] private float _maxShield = 5f;
+
+    [Header("info")]
+    [SerializeField] private bool _isDestroyed = false;
+    [SerializeField] private bool _isShieldDestroyed = false;
 
     /// <summary>
     /// The current health of the object
     /// </summary>
     public float CurrentHealth { get; set; }
+    public float CurrentShield { get; set; }
 
     /// <summary>
     /// Runs on first startup
@@ -28,9 +34,11 @@ public class Health : MonoBehaviour
         _characterController = GetComponent<Controller>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+        
         CurrentHealth = _startingHealth;
+        CurrentShield = _startingShield;
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
     }
 
     /// <summary>
@@ -56,16 +64,30 @@ public class Health : MonoBehaviour
     /// <param name="damage">amount of damage done</param>
     public void TakeDamage(int damage)
     {
-        Debug.Log("current health = " + CurrentHealth);
-
         // check if we have any health
         if (CurrentHealth <= 0)
         {
             return;
         }
 
+        // shield logic
+        if (!_isShieldDestroyed && _character is not null)
+        {
+            // only our player can have a shield if a box is the GameObject it wont pass this
+            CurrentShield -= damage;
+
+            if (CurrentShield <= 0)
+            {
+                _isShieldDestroyed = true;
+            }
+            
+            // keep breaking the shield            
+            UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
+            return;
+        }
+
         CurrentHealth -= damage;
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
 
         // no health left after damage
         if (CurrentHealth <= 0)
@@ -84,10 +106,10 @@ public class Health : MonoBehaviour
             _collider.enabled = false;
             _spriteRenderer.enabled = false;
             _characterController.enabled = false;
-            _IsDestroyed = true;
+            _isDestroyed = true;
         }
 
-        if (_IsDestroyed)
+        if (_isDestroyed)
         {
             CleanupObject();
         }
@@ -100,8 +122,10 @@ public class Health : MonoBehaviour
     {
         if (_character is not null)
         {
-            _IsDestroyed = false;
+            _isDestroyed = false;
             CurrentHealth = _startingHealth;
+            _isShieldDestroyed = false;
+            CurrentShield = _startingShield;
 
             _collider.enabled = true;
             _spriteRenderer.enabled = true;
@@ -109,7 +133,7 @@ public class Health : MonoBehaviour
         }
 
         gameObject.SetActive(true);
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
     }
 
     /// <summary>

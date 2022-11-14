@@ -1,18 +1,41 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [Header("settings")]
+    [Tooltip("The Time between shots. How long between each shot will take.")]
+    [SerializeField] private float fireRate = 0.5f;
+
+    [Header("Weapon")]
+    [SerializeField] private bool _HasMagazine = false;
+    [SerializeField] private int magazineSize = 30;
+    [SerializeField] private bool _HasAutoReload = false;
+
+    public Character WeaponUser { get; set; }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public void WeaponShot()
     {
-        
+        HandleShooting();
+    }
+
+    private void HandleShooting()
+    {
+
+    }
+
+    public void SetOwner(Character owner)
+    {
+        WeaponUser = owner;
+    }
+
+    public void Reload()
+    {
+
     }
 }

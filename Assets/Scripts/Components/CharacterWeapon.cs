@@ -31,12 +31,22 @@ public class CharacterWeapon : CharacterComponent
 
     public void Shoot()
     {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
 
+        CurrentWeapon.WeaponShot();
     }
 
     public void Reload()
     {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
 
+        CurrentWeapon.Reload();
     }
 
     /// <summary>
@@ -48,5 +58,6 @@ public class CharacterWeapon : CharacterComponent
     {
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition; // setting it as a child
+        CurrentWeapon.SetOwner(character);
     }
 }

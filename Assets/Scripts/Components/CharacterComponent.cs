@@ -10,13 +10,15 @@ public class CharacterComponent : MonoBehaviour
     protected Controller controller;
     protected CharacterMovement characterMovement;
     protected Animator animator;
+    protected Character character;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         controller = GetComponent<Controller>();
         characterMovement = GetComponent<CharacterMovement>();
-        animator= GetComponent<Animator>();
+        animator = GetComponent<Animator>();
+        character = GetComponent<Character>();
     }
 
     // Update is called once per frame

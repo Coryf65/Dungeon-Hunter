@@ -12,6 +12,13 @@ public class Weapon : MonoBehaviour
     [SerializeField] private bool _HasAutoReload = false;
 
     public Character WeaponUser { get; set; }
+    public int CurrentAmmo { get; set; }
+    public bool UseMagazine => _HasMagazine;
+
+    private void Awake()
+    {
+        CurrentAmmo = magazineSize;
+    }
 
     // Start is called before the first frame update
     void Start()

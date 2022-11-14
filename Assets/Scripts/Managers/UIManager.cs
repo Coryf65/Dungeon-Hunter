@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,6 +6,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Settings")]
     [SerializeField] private Image _healthBar;
+    [SerializeField] private TextMeshProUGUI healthValuetext;
 
     private float _currentHealth;
     private float _maxHealth;

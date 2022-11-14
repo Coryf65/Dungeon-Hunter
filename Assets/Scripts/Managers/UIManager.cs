@@ -6,7 +6,7 @@ public class UIManager : Singleton<UIManager>
 {
     [Header("Settings")]
     [SerializeField] private Image _healthBar;
-    [SerializeField] private TextMeshProUGUI healthValuetext;
+    [SerializeField] private TextMeshProUGUI _healthValueText;
 
     private float _currentHealth;
     private float _maxHealth;
@@ -25,5 +25,7 @@ public class UIManager : Singleton<UIManager>
     private void UpdateUI()
     {
         _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _currentHealth / _maxHealth, 10f * Time.deltaTime);
+        // display health like 10/10
+        _healthValueText.text = $"{_currentHealth} / {_maxHealth}";
     }
 }

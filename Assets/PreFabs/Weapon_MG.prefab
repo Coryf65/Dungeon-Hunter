@@ -129,3 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47208e8ce81f92428272a33a357b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireRate: 0.5
+  _HasMagazine: 1
+  magazineSize: 30
+  _HasAutoReload: 0

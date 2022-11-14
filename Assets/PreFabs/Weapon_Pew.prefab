@@ -7,13 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _HasMagazine
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: magazineSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7692112912820296406, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 884714483, guid: db84ca19c9eb90e4d91a6c668127f4ca, type: 3}
     - target: {fileID: 7692112914440354320, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_Name
-      value: WeaponBar_Pew
+      value: Weapon_Pew
       objectReference: {fileID: 0}
     - target: {fileID: 7692112914440354323, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_RootOrder

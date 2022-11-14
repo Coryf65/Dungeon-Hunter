@@ -1,18 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterWeapon : MonoBehaviour
+public class CharacterWeapon : CharacterComponent
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Weapon Settings")]
+    [SerializeField] private Weapon selectedWeapon;
+    [SerializeField] private Transform weaponHolderPosition;
+
+    public Weapon CurrentWeapon { get; set; }
+
+    protected override void Start()
     {
-        
+        base.Start();
+        EquipWeapon(selectedWeapon, weaponHolderPosition);
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void HandleInput()
     {
-        
+        // shoot, left click
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
+
+        // reload, R
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reload();
+        }
+    }
+
+    public void Shoot()
+    {
+
+    }
+
+    public void Reload()
+    {
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="weapon"></param>
+    /// <param name="position"></param>
+    public void EquipWeapon(Weapon weapon, Transform weaponPosition)
+    {
+        CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
+        CurrentWeapon.transform.parent = weaponPosition; // setting it as a child
     }
 }

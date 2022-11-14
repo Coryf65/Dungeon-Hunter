@@ -71,7 +71,7 @@ public class Health : MonoBehaviour
         if (CurrentHealth <= 0)
         {
             Death();
-        }        
+        }
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public class Health : MonoBehaviour
     /// Revive this object
     /// </summary>
     public void Revive()
-    {        
+    {
         if (_character is not null)
         {
             _IsDestroyed = false;
@@ -107,7 +107,7 @@ public class Health : MonoBehaviour
             _spriteRenderer.enabled = true;
             _characterController.enabled = true;
         }
-        
+
         gameObject.SetActive(true);
         UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth);
     }

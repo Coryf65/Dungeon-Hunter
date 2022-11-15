@@ -8,6 +8,7 @@ public class Controller : MonoBehaviour
     public bool NormalMovement { get; set; }
 
     private Rigidbody2D _rigidBody2D;
+    private Vector2 _recoilMovement;
 
     /// <summary>
     /// Start is called before the first frame update
@@ -20,6 +21,8 @@ public class Controller : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Recoil();
+
         if (NormalMovement)
         {
             HandleMovement();
@@ -51,5 +54,19 @@ public class Controller : MonoBehaviour
     public void SetMovement(Vector2 newPosition)
     {
         CurrentMovement = newPosition;
+    }
+
+    public void ApplyRecoil(Vector2 direction, float force)
+    {
+        _recoilMovement = direction.normalized * force;
+    }
+
+    private void Recoil()
+    {
+        // enough recoil to move the player
+        if (_recoilMovement.magnitude > 0.01f)
+        {
+            _rigidBody2D.AddForce(_recoilMovement);
+        }
     }
 }

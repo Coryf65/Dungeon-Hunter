@@ -8,12 +8,28 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _fireRate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _useRecoil
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: _HasMagazine
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _recoilForce
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: magazineSize
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _magazineSize
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7692112912820296406, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_Sprite

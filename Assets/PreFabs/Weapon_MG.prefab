@@ -130,10 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c47208e8ce81f92428272a33a357b9f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 0.5
-  _HasMagazine: 1
-  magazineSize: 30
+  _fireRate: 0.5
+  _hasMagazine: 0
+  _magazineSize: 30
   _HasAutoReload: 0
+  _useRecoil: 1
+  _recoilForce: 5
 --- !u!114 &-1926886054894826657
 MonoBehaviour:
   m_ObjectHideFlags: 0

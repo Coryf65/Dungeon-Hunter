@@ -22,6 +22,11 @@ public class CharacterWeapon : CharacterComponent
             Shoot();
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            StopWeapon();
+        }
+
         // reload, R
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -47,6 +52,16 @@ public class CharacterWeapon : CharacterComponent
         }
 
         CurrentWeapon.Reload();
+    }
+
+    public void StopWeapon()
+    {
+        if (CurrentWeapon == null)
+        {
+            return;
+        }
+
+        CurrentWeapon.StopWeapon();
     }
 
     /// <summary>

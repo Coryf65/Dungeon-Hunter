@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteFlip : CharacterComponent
@@ -12,6 +10,13 @@ public class SpriteFlip : CharacterComponent
 
     [SerializeField] private FlipMode _flipMode = FlipMode.MovementDirection;
     [SerializeField] private float _threshold = 0.1f;
+
+    public bool FacingRight { get; set; }
+
+    void Awake()
+    {
+        FacingRight = true;
+    }
 
     protected override void HandleAbility()
     {
@@ -36,7 +41,8 @@ public class SpriteFlip : CharacterComponent
             if (controller.CurrentMovement.normalized.x > 0)
             {
                 FaceDirection(1);
-            } else
+            }
+            else
             {
                 FaceDirection(-1);
             }
@@ -54,11 +60,13 @@ public class SpriteFlip : CharacterComponent
         if (newDirection == 1)
         {
             transform.localScale = new Vector3(1, 1, 1);
+            FacingRight = true;
         }
 
         if (newDirection <= 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
+            FacingRight = false;
         }
     }
 

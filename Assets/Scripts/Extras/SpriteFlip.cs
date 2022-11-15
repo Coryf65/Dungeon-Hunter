@@ -49,11 +49,30 @@ public class SpriteFlip : CharacterComponent
         }
     }
 
+    /// <summary>
+    /// Flips our character by our weapon aiming
+    /// </summary>
     private void FlipToWeaponDirection()
     {
-
+        // 
+        if (characterWeapon != null)
+        {
+            float weaponAngle = characterWeapon.WeaponAim.CurrentAimAngleAbsolute;
+            if (weaponAngle > 90 || weaponAngle < -90)
+            {
+                FaceDirection(-1); // left
+            }
+            else
+            {
+                FaceDirection(1); // right
+            }
+        }
     }
 
+    /// <summary>
+    /// Makes our character face the direction of movement
+    /// </summary>
+    /// <param name="newDirection">direction to face</param>
     private void FaceDirection(int newDirection)
     {
         // moving right

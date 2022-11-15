@@ -9,6 +9,7 @@ public class CharacterComponent : MonoBehaviour
 
     protected Controller controller;
     protected CharacterMovement characterMovement;
+    protected CharacterWeapon characterWeapon;
     protected Animator animator;
     protected Character character;
 
@@ -19,6 +20,7 @@ public class CharacterComponent : MonoBehaviour
         characterMovement = GetComponent<CharacterMovement>();
         animator = GetComponent<Animator>();
         character = GetComponent<Character>();
+        characterWeapon = GetComponent<CharacterWeapon>();
     }
 
     // Update is called once per frame

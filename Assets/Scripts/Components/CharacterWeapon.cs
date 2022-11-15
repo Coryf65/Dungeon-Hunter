@@ -7,6 +7,7 @@ public class CharacterWeapon : CharacterComponent
     [SerializeField] private Transform weaponHolderPosition;
 
     public Weapon CurrentWeapon { get; set; }
+    public WeaponAim WeaponAim { get; set; }
 
     protected override void Start()
     {
@@ -74,5 +75,6 @@ public class CharacterWeapon : CharacterComponent
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition; // setting it as a child
         CurrentWeapon.SetOwner(character);
+        WeaponAim = CurrentWeapon.GetComponent<WeaponAim>();
     }
 }

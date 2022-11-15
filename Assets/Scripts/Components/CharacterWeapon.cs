@@ -17,7 +17,7 @@ public class CharacterWeapon : CharacterComponent
     protected override void HandleInput()
     {
         // shoot, left click
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
         {
             Shoot();
         }

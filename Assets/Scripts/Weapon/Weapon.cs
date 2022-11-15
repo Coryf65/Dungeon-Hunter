@@ -100,6 +100,12 @@ public class Weapon : MonoBehaviour
 
     private void RequestShot()
     {
+        if (!CanShoot)
+        {
+            return;
+        }
+
         WeaponAmmo.ConsumeAmmo();
+        CanShoot = false;
     }
 }

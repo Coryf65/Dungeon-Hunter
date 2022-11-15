@@ -11,7 +11,9 @@ public class Character : MonoBehaviour
     }
 
     [SerializeField]
-    private CharacterTypes characterType = CharacterTypes.Player;
+    private CharacterTypes characterType;
+
+    public CharacterTypes CharacterType => characterType;
 
     // Start is called before the first frame update
     void Start()

@@ -11,11 +11,15 @@ public class UIManager : Singleton<UIManager>
     [Header("Shield Settings")]
     [SerializeField] private Image _shieldBar;
     [SerializeField] private TextMeshProUGUI _shieldValueText;
+    [Header("Weapon")]
+    [SerializeField] private TextMeshProUGUI _currentAmmoText;
 
     private float _currentHealth;
     private float _maxHealth;
     private float _currentShield;
     private float _maxShield;
+    private float _currentAmmo;
+    private float _maxAmmo;
 
     private void Update()
     {
@@ -30,6 +34,12 @@ public class UIManager : Singleton<UIManager>
         _maxHealth = maxHealth;
     }
 
+    public void UpdateAmmo(int currentAmmo, int maxAmmo)
+    {
+        _currentAmmo = currentAmmo;
+        _maxAmmo = maxAmmo;
+    }
+
     private void UpdateUI()
     {
         _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _currentHealth / _maxHealth, 10f * Time.deltaTime);
@@ -38,5 +48,7 @@ public class UIManager : Singleton<UIManager>
 
         _shieldBar.fillAmount = Mathf.Lerp(_shieldBar.fillAmount, _currentShield / _maxShield, 10f * Time.deltaTime);
         _shieldValueText.text = $"{_currentShield} / {_maxShield}";
+
+        _currentAmmoText.text = $"{_currentAmmo} / {_maxAmmo}";
     }
 }

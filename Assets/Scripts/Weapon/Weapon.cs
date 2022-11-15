@@ -8,16 +8,19 @@ public class Weapon : MonoBehaviour
 
     [Header("Weapon")]
     [SerializeField] private bool _HasMagazine = false;
-    [SerializeField] private int magazineSize = 30;
+    [SerializeField] private int _magazineSize = 30;
     [SerializeField] private bool _HasAutoReload = false;
 
     public Character WeaponUser { get; set; }
+    public WeaponAmmo WeaponAmmo { get; set; }
     public int CurrentAmmo { get; set; }
     public bool UseMagazine => _HasMagazine;
+    public int MagazineSize => _magazineSize;
 
     private void Awake()
     {
-        CurrentAmmo = magazineSize;
+        WeaponAmmo = GetComponent<WeaponAmmo>();
+        CurrentAmmo = _magazineSize;
     }
 
     // Start is called before the first frame update
@@ -33,7 +36,7 @@ public class Weapon : MonoBehaviour
 
     private void HandleShooting()
     {
-
+        WeaponAmmo.ConsumeAmmo();
     }
 
     public void SetOwner(Character owner)
@@ -43,6 +46,6 @@ public class Weapon : MonoBehaviour
 
     public void Reload()
     {
-
+        WeaponAmmo.RefillAmmo();
     }
 }

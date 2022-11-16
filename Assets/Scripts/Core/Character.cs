@@ -10,10 +10,13 @@ public class Character : MonoBehaviour
         AI
     }
 
-    [SerializeField]
-    private CharacterTypes characterType;
+    [SerializeField] private CharacterTypes _characterType;
+    [SerializeField] private GameObject _characterSprite;
+    [SerializeField] private Animator _characterAnimator;
 
-    public CharacterTypes CharacterType => characterType;
+    public CharacterTypes CharacterType => _characterType;
+    public GameObject CharacterSprite => _characterSprite;
+    public Animator Animator => _characterAnimator;
 
     // Start is called before the first frame update
     void Start()

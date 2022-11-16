@@ -43,6 +43,7 @@ public class Weapon : MonoBehaviour
     void Update()
     {
         WeaponCanShoot();
+        RotateWeapon();
     }
 
     /// <summary>
@@ -152,6 +153,18 @@ public class Weapon : MonoBehaviour
                     _characterController.ApplyRecoil(Vector2.right, _recoilForce);
                 }
             }
+        }
+    }
+
+    private void RotateWeapon()
+    {
+        if (WeaponUser.GetComponent<SpriteFlip>().FacingRight)
+        {
+            transform.localScale = new Vector3(x: 1, y: 1, z: 1);
+        }
+        else
+        {
+            transform.localScale = new Vector3(x: -1, y: 1, z: 1);
         }
     }
 }

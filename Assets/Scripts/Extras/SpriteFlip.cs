@@ -33,6 +33,9 @@ public class SpriteFlip : CharacterComponent
         }
     }
 
+    /// <summary>
+    /// Flips our character by our weapon aiming
+    /// </summary>
     private void FlipToMovementDirection()
     {
         // we are moving
@@ -78,13 +81,13 @@ public class SpriteFlip : CharacterComponent
         // moving right
         if (newDirection == 1)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            character.CharacterSprite.transform.localScale = new Vector3(1, 1, 1);
             FacingRight = true;
         }
 
         if (newDirection <= 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            character.CharacterSprite.transform.localScale = new Vector3(-1, 1, 1);
             FacingRight = false;
         }
     }

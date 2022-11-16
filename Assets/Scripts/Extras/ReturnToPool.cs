@@ -4,11 +4,24 @@ public class ReturnToPool : MonoBehaviour
 {
     [SerializeField] private float _lifetime = 2f; // seconds
 
+    private Projectile _projectile;
+
+    private void Start()
+    {
+        _projectile = GetComponent<Projectile>();
+    }
+
     /// <summary>
     /// Return an object back to the pool
     /// </summary>
     private void Return()
     {
+        if (_projectile != null)
+        {
+            // if we are attached to an Projectile then reset the X scale
+            _projectile.ResetProjectile();
+        }
+
         gameObject.SetActive(false);
     }
 

@@ -38,6 +38,9 @@ public class Projectile : MonoBehaviour
         Speed += _acceleration * Time.deltaTime;
     }
 
+    /// <summary>
+    /// Flips this projectile
+    /// </summary>
     public void FlipProjectile()
     {
         if (_spriteRenderer != null)
@@ -47,6 +50,12 @@ public class Projectile : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Set the direction and rotation in order to move
+    /// </summary>
+    /// <param name="direction">New direction</param>
+    /// <param name="rotation">Users rotation</param>
+    /// <param name="isFacingRight">Users Flip direction value</param>
     public void SetDirection(Vector2 direction, Quaternion rotation, bool isFacingRight = true)
     {
         Direction = direction;
@@ -57,5 +66,10 @@ public class Projectile : MonoBehaviour
         }
 
         transform.rotation = rotation;
+    }
+
+    public void ResetProjectile()
+    {
+        _spriteRenderer.flipX = false;
     }
 }

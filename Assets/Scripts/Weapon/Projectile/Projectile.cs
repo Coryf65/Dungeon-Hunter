@@ -4,6 +4,7 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float _speed = 100f;
     [SerializeField] private float _acceleration = 0f;
+    [SerializeField] private float _adjustment = 10f;
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
@@ -12,9 +13,8 @@ public class Projectile : MonoBehaviour
     public Vector2 Direction { get; set; }
     public bool IsFacingRight { get; set; }
     public float Speed { get; set; }
-
-    // Start is called before the first frame update
-    private void Start()
+    
+    private void Awake()
     {
         Speed = _speed;
         IsFacingRight = true;        
@@ -32,7 +32,7 @@ public class Projectile : MonoBehaviour
     public void MoveProjectile()
     {
         // testing
-        _movement = Direction * Speed * Time.fixedDeltaTime;
+        _movement = Direction * (Speed / _adjustment) * Time.fixedDeltaTime;
         _rigidbody2D.MovePosition(_rigidbody2D.position + _movement);
 
         Speed += _acceleration * Time.deltaTime;

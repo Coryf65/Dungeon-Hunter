@@ -8,12 +8,15 @@ public class SingleShotWeapon : Weapon
     private Vector3 _projectileSpawnValue;
 
     public Vector3 ProjectileSpawnPoint { get; set; }
+    public ObjectPooler Pooler { get; set; }
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _projectileSpawnValue = _projectileSpawnPoint;
         _projectileSpawnValue.y = -_projectileSpawnPoint.y;
+
+        Pooler = GetComponent<ObjectPooler>();
     }
 
     // Update is called once per frame
@@ -25,13 +28,32 @@ public class SingleShotWeapon : Weapon
     protected override void HandleShooting()
     {
         base.HandleShooting();
-        //Fire
 
+        if (CanShoot)
+        {
+            CalculateProjectileSpawns();
+            SpawnProjectile(ProjectileSpawnPoint);
+        }
     }
 
     private void SpawnProjectile(Vector2 position)
     {
+        bool facingDirection = false;
+        
+        GameObject projectilePooled = Pooler.GetObjectFromPool();
+        projectilePooled.transform.position = position;
+        projectilePooled.SetActive(true);
 
+        Projectile projectile = projectilePooled.GetComponent<Projectile>();        
+        Vector2 newDirection = WeaponUser.GetComponent<SpriteFlip>().FacingRight ? transform.right : transform.right * -1;
+
+        if (newDirection.x > 0)
+        {
+            facingDirection = true;
+        }       
+
+        projectile.SetDirection(newDirection, transform.rotation, facingDirection);
+        CanShoot = false;
     }
 
     private void OnDrawGizmosSelected()

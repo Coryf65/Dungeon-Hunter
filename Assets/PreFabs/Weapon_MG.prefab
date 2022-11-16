@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 9096772232775439982}
   - component: {fileID: -1926886054894826657}
   - component: {fileID: -1901307610203029056}
+  - component: {fileID: -240657526420728361}
   m_Layer: 0
   m_Name: Weapon_MG
   m_TagString: Untagged
@@ -163,3 +164,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reticlePrefab: {fileID: 8683375207391841746, guid: 2042e197a4e038143b6bd390322a8a1e, type: 3}
+--- !u!114 &-240657526420728361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692112914440354320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9a744fc2875c2f429d1cdee6b038531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _objectPrefab: {fileID: 7105234472639514975, guid: f55144e8caa7ea145b46985b139e55ce, type: 3}
+  _poolSize: 10
+  _poolCanExpand: 1

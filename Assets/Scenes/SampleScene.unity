@@ -379,6 +379,10 @@ MonoBehaviour:
   _targetTransform: {fileID: 917027369}
   _offset: {x: 0, y: 0}
   _cameraMode: 0
+  _UseCameraShake: 1
+  _shakeVibrato: 0.01
+  _shakeRandomness: 0.01
+  _shakeDuration: 0.05
 --- !u!1 &605212113
 GameObject:
   m_ObjectHideFlags: 0

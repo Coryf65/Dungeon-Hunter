@@ -76,4 +76,24 @@ public class Camera2D : MonoBehaviour
         }
         yield return null;
     }
+    private void OnShooting()
+    {
+        ShakeCamera();
+    }
+
+    private void OnEnable()
+    {
+        if (_UseCameraShake)
+        {
+            CharacterWeapon.OnStartShooting += OnShooting;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_UseCameraShake)
+        {
+            CharacterWeapon.OnStartShooting -= OnShooting;
+        }
+    }
 }

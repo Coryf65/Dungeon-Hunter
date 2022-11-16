@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class CharacterWeapon : CharacterComponent
@@ -5,7 +6,7 @@ public class CharacterWeapon : CharacterComponent
     [Header("Weapon Settings")]
     [SerializeField] private Weapon selectedWeapon;
     [SerializeField] private Transform weaponHolderPosition;
-
+    public static Action OnStartShooting;
     public Weapon CurrentWeapon { get; set; }
     public WeaponAim WeaponAim { get; set; }
 
@@ -55,6 +56,8 @@ public class CharacterWeapon : CharacterComponent
 
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
+            // we only want to do this for players
+            OnStartShooting?.Invoke();
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
         }
     }

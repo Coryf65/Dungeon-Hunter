@@ -4,7 +4,7 @@ public class Weapon : MonoBehaviour
 {
     [Header("settings")]
     [Tooltip("The Time between shots. How long between each shot will take.")]
-    [Range(0.1f, 10f)]
+    [Range(0f, 10f)]
     [SerializeField] private float _fireRate = 0.5f;
     private float _nextShotTime;
     private Controller _characterController;
@@ -28,16 +28,10 @@ public class Weapon : MonoBehaviour
     public bool CanShoot { get; set; }
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         CurrentAmmo = _magazineSize;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     protected virtual void Update()

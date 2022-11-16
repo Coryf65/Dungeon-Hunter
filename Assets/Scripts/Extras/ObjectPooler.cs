@@ -21,6 +21,9 @@ public class ObjectPooler : MonoBehaviour
         Refill();
     }
 
+    /// <summary>
+    /// Create our pool
+    /// </summary>
     public void Refill()
     {
         _pooledObjects = new();
@@ -31,6 +34,10 @@ public class ObjectPooler : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// return one object from our pool
+    /// </summary>
+    /// <returns></returns>
     public GameObject GetObjectFromPool()
     {
         for (int i = 0; i < _pooledObjects.Count; i++)
@@ -45,11 +52,16 @@ public class ObjectPooler : MonoBehaviour
         if (_poolCanExpand)
         {
             // none left to use we need to expand
-            AddObjectToPool();
+            return AddObjectToPool();
         }
+
         return null;
     }
 
+    /// <summary>
+    /// Adds one object into the existing pool
+    /// </summary>
+    /// <returns></returns>
     public GameObject AddObjectToPool()
     {
         GameObject gameObject = Instantiate(_objectPrefab);

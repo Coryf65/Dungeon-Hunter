@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ReturnToPool : MonoBehaviour
 {
     [SerializeField] private float _lifetime = 2f; // seconds
-    
+
     /// <summary>
     /// Return an object back to the pool
     /// </summary>

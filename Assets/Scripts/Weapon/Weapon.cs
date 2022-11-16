@@ -133,7 +133,7 @@ public class Weapon : MonoBehaviour
             Recoil();
         }
 
-        WeaponAmmo.ConsumeAmmo();        
+        WeaponAmmo.ConsumeAmmo();
     }
 
     private void Recoil()

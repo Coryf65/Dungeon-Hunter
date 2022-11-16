@@ -13,11 +13,11 @@ public class Projectile : MonoBehaviour
     public Vector2 Direction { get; set; }
     public bool IsFacingRight { get; set; }
     public float Speed { get; set; }
-    
+
     private void Awake()
     {
         Speed = _speed;
-        IsFacingRight = true;        
+        IsFacingRight = true;
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -50,7 +50,7 @@ public class Projectile : MonoBehaviour
     public void SetDirection(Vector2 direction, Quaternion rotation, bool isFacingRight = true)
     {
         Direction = direction;
-        
+
         if (IsFacingRight != isFacingRight)
         {
             FlipProjectile();

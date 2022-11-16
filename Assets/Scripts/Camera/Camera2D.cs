@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera2D : MonoBehaviour
@@ -13,7 +12,7 @@ public class Camera2D : MonoBehaviour
     [SerializeField] private float _shakeVibrato = 10f;
     [SerializeField] private float _shakeRandomness = 0.1f;
     [SerializeField] private float _shakeDuration = 0.01f;
-    
+
     private enum CameraMode
     {
         Update,
@@ -48,8 +47,8 @@ public class Camera2D : MonoBehaviour
     private void FollowTarget()
     {
         Vector3 desiredPosition = new(
-            x: _targetTransform.position.x + _offset.x, 
-            y: _targetTransform.position.y + _offset.y, 
+            x: _targetTransform.position.x + _offset.x,
+            y: _targetTransform.position.y + _offset.y,
             z: transform.position.z
         );
 

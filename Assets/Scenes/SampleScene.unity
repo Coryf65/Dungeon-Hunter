@@ -393,8 +393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _UseCameraShake: 1
-  _shakeVibrato: 10
-  _shakeRandomness: 0.1
+  _shakeVibrato: 0.001
+  _shakeRandomness: 0.02
   _shakeDuration: 0.01
 --- !u!1 &605212113
 GameObject:

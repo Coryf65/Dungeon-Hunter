@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour
 
     }
 
-    void Update()
+    protected virtual void Update()
     {
         WeaponCanShoot();
         RotateWeapon();
@@ -57,7 +57,7 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// Handles how the weapon shoots
     /// </summary>
-    private void HandleShooting()
+    protected virtual void HandleShooting()
     {
         if (UseMagazine)
         {
@@ -82,7 +82,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void WeaponCanShoot()
+    /// <summary>
+    /// Controls the next time to shoot
+    /// </summary>
+    protected virtual void WeaponCanShoot()
     {
         if (Time.time > _nextShotTime)
         {
@@ -103,6 +106,10 @@ public class Weapon : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reference to the owner of this weapon
+    /// </summary>
+    /// <param name="owner">The Character</param>
     public void SetOwner(Character owner)
     {
         WeaponUser = owner;
@@ -156,7 +163,7 @@ public class Weapon : MonoBehaviour
         }
     }
 
-    private void RotateWeapon()
+    protected virtual void RotateWeapon()
     {
         if (WeaponUser.GetComponent<SpriteFlip>().FacingRight)
         {

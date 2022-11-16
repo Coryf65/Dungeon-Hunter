@@ -607,6 +607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _characterType: 0
   _characterSprite: {fileID: 986765703}
+  _characterAnimator: {fileID: 986765705}
 --- !u!61 &917027371
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -750,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bb820180b37b42aaef23b410104f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedWeapon: {fileID: -8385028157013974556, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+  selectedWeapon: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
   weaponHolderPosition: {fileID: 1693074919}
 --- !u!1 &977789263
 GameObject:

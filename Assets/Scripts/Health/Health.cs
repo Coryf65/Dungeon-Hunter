@@ -2,11 +2,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    private Character _character;
-    private Controller _characterController;
-    private Collider2D _collider;
-    private SpriteRenderer _spriteRenderer;    
-
     [Header("Health")]
     [SerializeField] private float _startingHealth = 10f;
     [SerializeField] private float _maxHealth = 10f;
@@ -18,6 +13,12 @@ public class Health : MonoBehaviour
     [Header("info")]
     [SerializeField] private bool _isDestroyed = false;
     [SerializeField] private bool _isShieldDestroyed = false;
+    [SerializeField] private bool _isPlayer = false;
+
+    private Character _character;
+    private Controller _characterController;
+    private Collider2D _collider;
+    private SpriteRenderer _spriteRenderer;
 
     /// <summary>
     /// The current health of the object
@@ -38,7 +39,11 @@ public class Health : MonoBehaviour
         CurrentHealth = _startingHealth;
         CurrentShield = _startingShield;
 
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
+        if (_character != null)
+        {
+            _isPlayer = _character.CharacterType == Character.CharacterTypes.Player;
+            UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
+        }        
     }
 
     /// <summary>
@@ -82,12 +87,12 @@ public class Health : MonoBehaviour
             }
             
             // keep breaking the shield            
-            UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
+            UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
             return;
         }
 
         CurrentHealth -= damage;
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
 
         // no health left after damage
         if (CurrentHealth <= 0)
@@ -133,7 +138,7 @@ public class Health : MonoBehaviour
         }
 
         gameObject.SetActive(true);
-        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
     }
 
     /// <summary>

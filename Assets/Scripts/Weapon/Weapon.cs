@@ -20,6 +20,9 @@ public class Weapon : MonoBehaviour
     [Range(0, 50)]
     [SerializeField] private int _recoilForce = 0;
 
+    [Header("Effects")]
+    [SerializeField] private ParticleSystem _muzzleParticles;
+
     public Character WeaponUser { get; set; }
     public WeaponAmmo WeaponAmmo { get; set; }
     public int CurrentAmmo { get; set; }
@@ -134,6 +137,7 @@ public class Weapon : MonoBehaviour
         }
 
         WeaponAmmo.ConsumeAmmo();
+        _muzzleParticles.Play();
     }
 
     private void Recoil()

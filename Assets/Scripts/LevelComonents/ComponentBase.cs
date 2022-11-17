@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ComponentBase : MonoBehaviour
@@ -13,11 +11,13 @@ public class ComponentBase : MonoBehaviour
 
     private Health _health;
     private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider2D;
 
     void Start()
     {
         _health = GetComponent<Health>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2D = GetComponent<Collider2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,7 +32,7 @@ public class ComponentBase : MonoBehaviour
     {
         _health.TakeDamage(_damage);
 
-        if (_health.CurrentHealth > 0 && _damagedSprite != null && _isDamageable)
+        if (_health.CurrentHealth > 0 && _damagedSprite != null)
         {
             // change sprite
             _spriteRenderer.sprite = _damagedSprite;
@@ -40,7 +40,15 @@ public class ComponentBase : MonoBehaviour
 
         if (_health.CurrentHealth <= 0)
         {
-            Destroy(gameObject);
+            if (_isDamageable)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                _spriteRenderer.sprite = _damagedSprite;
+                _collider2D.enabled = false;
+            }
         }
     }
 }

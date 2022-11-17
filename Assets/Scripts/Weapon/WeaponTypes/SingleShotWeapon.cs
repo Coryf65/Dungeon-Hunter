@@ -91,7 +91,5 @@ public class SingleShotWeapon : Weapon
         {
             ProjectileSpawnPoint = transform.position - transform.rotation * _projectileSpawnValue;
         }
-
-
     }
 }

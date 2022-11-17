@@ -5,9 +5,7 @@ public class Weapon : MonoBehaviour
     [Header("settings")]
     [Tooltip("The Time between shots. How long between each shot will take.")]
     [Range(0f, 10f)]
-    [SerializeField] private float _fireRate = 0.5f;
-    private float _nextShotTime;
-    private Controller _characterController;
+    [SerializeField] private float _fireRate = 0.5f;    
 
     [Header("Weapon")]
     [SerializeField] private bool _hasMagazine = false;
@@ -23,6 +21,11 @@ public class Weapon : MonoBehaviour
     [Header("Effects")]
     [SerializeField] private ParticleSystem _muzzleParticles;
 
+    private float _nextShotTime;
+    private Controller _characterController;
+    private Animator _animator;
+    private readonly int _weaponUse = Animator.StringToHash(name: "WeaponUse");
+
     public Character WeaponUser { get; set; }
     public WeaponAmmo WeaponAmmo { get; set; }
     public int CurrentAmmo { get; set; }
@@ -34,6 +37,7 @@ public class Weapon : MonoBehaviour
     protected virtual void Awake()
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
+        _animator = GetComponent<Animator>();
         CurrentAmmo = _magazineSize;
     }
 
@@ -136,6 +140,7 @@ public class Weapon : MonoBehaviour
             Recoil();
         }
 
+        _animator.SetTrigger(_weaponUse);
         WeaponAmmo.ConsumeAmmo();
         _muzzleParticles.Play();
     }

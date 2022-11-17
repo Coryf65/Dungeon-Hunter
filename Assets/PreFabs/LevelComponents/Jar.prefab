@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8083669795308173537}
   - component: {fileID: 8222609436153712265}
   - component: {fileID: 2922350997518738183}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Jar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   _maxShield: 0
   _isDestroyed: 0
   _isShieldDestroyed: 0
+  _isPlayer: 0
 --- !u!114 &2922350997518738183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,4 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e47fc51e5746e45ac780784b59b5f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damagedSprite: {fileID: 0}
   _damage: 1
+  _isDamageable: 1

@@ -3,12 +3,12 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Health")]
-    [SerializeField] private float _startingHealth = 10f;
-    [SerializeField] private float _maxHealth = 10f;
+    [SerializeField] private float _startingHealth = 1f;
+    [SerializeField] private float _maxHealth = 1f;
 
     [Header("Shield")]
-    [SerializeField] private float _startingShield = 5f;
-    [SerializeField] private float _maxShield = 5f;
+    [SerializeField] private float _startingShield = 0f;
+    [SerializeField] private float _maxShield = 0f;
 
     [Header("info")]
     [SerializeField] private bool _isDestroyed = false;
@@ -39,6 +39,7 @@ public class Health : MonoBehaviour
         CurrentHealth = _startingHealth;
         CurrentShield = _startingShield;
 
+        // only update the UI if it has a character component
         if (_character != null)
         {
             _isPlayer = _character.CharacterType == Character.CharacterTypes.Player;

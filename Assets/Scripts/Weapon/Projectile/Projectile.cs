@@ -13,6 +13,7 @@ public class Projectile : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private SpriteRenderer _spriteRenderer;
+    private Collider2D _collider2D;
     private Vector2 _movement;
     private bool _canMove = true;
 
@@ -27,6 +28,7 @@ public class Projectile : MonoBehaviour
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _collider2D = GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -75,11 +77,15 @@ public class Projectile : MonoBehaviour
         transform.rotation = rotation;
     }
 
+    /// <summary>
+    /// Resets the projectiles components ready to be pooled again.
+    /// </summary>
     public void ResetProjectile()
     {
         _spriteRenderer.flipX = false;
         _canMove = true;
         _spriteRenderer.enabled = true;
+        _collider2D.enabled = true;
     }
 
     /// <summary>
@@ -92,6 +98,7 @@ public class Projectile : MonoBehaviour
         {
             _canMove = false;
             _spriteRenderer.enabled = false;
+            _collider2D.enabled = false;
             _impactEffect.Play();
         }
     }

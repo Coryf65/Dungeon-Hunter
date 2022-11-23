@@ -3,6 +3,7 @@ using UnityEngine;
 public class Collectables : MonoBehaviour
 {
     [Header("Settings")]
+    [Tooltip("checked: Destroy item on pickup, unchecked: Hides item on pickup")]
     [SerializeField] private bool _canDestroyItem = true;
 
     protected Character _character;

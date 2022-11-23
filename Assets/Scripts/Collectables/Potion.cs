@@ -5,6 +5,7 @@ public class Potion : Collectables
     [Tooltip("How much health this item should give the Player. adds this amount to the current health on pickup.")]
     [Range(0, 20)]
     [SerializeField] private int _healAmount = 1;
+    [Header("Pickup Effect")]
     [SerializeField] private ParticleSystem _effects;
 
     protected override void HandlePickup()

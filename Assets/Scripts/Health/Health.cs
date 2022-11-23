@@ -159,4 +159,10 @@ public class Health : MonoBehaviour
         CurrentHealth = Mathf.Min(CurrentHealth + amount, _maxHealth);
         UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
     }
+
+    public void GainShield(int amount)
+    {
+        CurrentShield = Mathf.Min(CurrentShield + amount, _maxShield);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
+    }
 }

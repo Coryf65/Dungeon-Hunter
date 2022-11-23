@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -8083669795308173537}
   - component: {fileID: 8222609436153712265}
   - component: {fileID: 2922350997518738183}
+  - component: {fileID: 2007934151394104463}
   m_Layer: 7
   m_Name: Jar
   m_TagString: Untagged
@@ -169,3 +170,22 @@ MonoBehaviour:
   _damagedSprite: {fileID: -190806660, guid: 2c55dd28bbfa302478042da949c348da, type: 3}
   _damage: 1
   _isDamageable: 0
+--- !u!114 &2007934151394104463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3880554190468975893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cab7240d31f744aa306f31922af905, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _jarLoot:
+  - {fileID: 935444978830246883, guid: ed1a0b2d68a5b124382a3a77d411f482, type: 3}
+  - {fileID: 3089010335614504091, guid: 45191300a74c06d44b2ca1afb89984b4, type: 3}
+  - {fileID: 4173429758616369040, guid: b96b4ef369c6e294f9a5b5db45ea8ffd, type: 3}
+  _randomXPosition: 2
+  _randomYPosition: 2
+  _dropLootChancePercent: 50

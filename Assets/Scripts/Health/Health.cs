@@ -149,4 +149,14 @@ public class Health : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// Gives the Player the amount of health passed in addtion to it's Current Health
+    /// </summary>
+    /// <param name="amount"></param>
+    public void GainHealth(int amount)
+    {
+        CurrentHealth = Mathf.Min(CurrentHealth + amount, _maxHealth);
+        UIManager.Instance.UpdateHealth(CurrentHealth, _maxHealth, CurrentShield, _maxShield, _isPlayer);
+    }
 }

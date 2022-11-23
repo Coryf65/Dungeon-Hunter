@@ -5,10 +5,10 @@ public class Collectables : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private bool _canDestroyItem = true;
 
-    private Character _character;
-    private GameObject _objectCollided;
-    private SpriteRenderer _spriteRenderer;
-    private Collider2D _collider2D;
+    protected Character _character;
+    protected GameObject _objectCollided;
+    protected SpriteRenderer _spriteRenderer;
+    protected Collider2D _collider2D;
 
     private void Start()
     {
@@ -40,6 +40,10 @@ public class Collectables : MonoBehaviour
         bool isAPickup = false;
         _character = item.GetComponent<Character>();
 
+        // no character class, cannot use pickup
+        if (_character is null)        
+            return isAPickup;
+        
         if (_character.CharacterType == Character.CharacterTypes.Player)
         {
             isAPickup = true;

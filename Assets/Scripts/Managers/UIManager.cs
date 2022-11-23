@@ -13,6 +13,8 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private TextMeshProUGUI _shieldValueText;
     [Header("Weapon")]
     [SerializeField] private TextMeshProUGUI _currentAmmoText;
+    [Header("Coins")]
+    [SerializeField] private TextMeshProUGUI _coinsAmountText;
 
     private float _currentHealth;
     private float _maxHealth;
@@ -46,14 +48,19 @@ public class UIManager : Singleton<UIManager>
     {
         if (_isPlayer)
         {
-            _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _currentHealth / _maxHealth, 10f * Time.deltaTime);
-            // display health like 10/10
-            _healthValueText.text = $"{_currentHealth} / {_maxHealth}";
+            // Health
+            _healthBar.fillAmount = Mathf.Lerp(_healthBar.fillAmount, _currentHealth / _maxHealth, 10f * Time.deltaTime);            
+            _healthValueText.text = $"{_currentHealth} / {_maxHealth}"; // display health like 10/10
 
+            // Shield
             _shieldBar.fillAmount = Mathf.Lerp(_shieldBar.fillAmount, _currentShield / _maxShield, 10f * Time.deltaTime);
             _shieldValueText.text = $"{_currentShield} / {_maxShield}";
 
+            // Ammo
             _currentAmmoText.text = $"{_currentAmmo} / {_maxAmmo}";
+
+            // Coins
+            _coinsAmountText.text = CoinManager.Instance.Coins.ToString("N0");
         }
     }
 }

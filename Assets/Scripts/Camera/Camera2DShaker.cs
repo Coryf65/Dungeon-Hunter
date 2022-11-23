@@ -7,8 +7,8 @@ public class Camera2DShaker : MonoBehaviour
     [Header("Turn on/off the Camera Shaker")]
     [SerializeField] private bool _UseCameraShake = true;
     [Header("Camera2D Shaker Settings")]
-    [SerializeField] private float _shakeVibrato = 10f;
-    [SerializeField] private float _shakeRandomness = 0.1f;
+    [SerializeField] private float _shakeVibrato = 0.1f;
+    [SerializeField] private float _shakeRandomness = 0.01f;
     [SerializeField] private float _shakeDuration = 0.01f;
 
     public void ShakeCamera()

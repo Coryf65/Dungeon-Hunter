@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42ba33b641c5ea742821a881073fcc8d, type: 3}
+  m_Name: ShopShieldItem
+  m_EditorClassIdentifier: 
+  ItemName: ShieldPot
+  ItemCollectable: {fileID: 9134830503790968074, guid: b96b4ef369c6e294f9a5b5db45ea8ffd, type: 3}
+  WeaponToSell: {fileID: 0}
+  Cost: 50

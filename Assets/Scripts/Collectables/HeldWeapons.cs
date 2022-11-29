@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //CWeapon
-public class HeldWeapons : Collectables
+public class Chara : Collectables
 {
     [SerializeField] private ItemData weaponData;
 

@@ -27,6 +27,10 @@ PrefabInstance:
       propertyPath: _magazineSize
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -240657526420728361, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _objectPrefab
+      value: 
+      objectReference: {fileID: 7105234472639514975, guid: 41bb72c51482b944486164f400c33b15, type: 3}
     - target: {fileID: 7692112912820296406, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -80,8 +84,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _fireRate
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: _weaponName
       value: Hand Cannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _recoilForce
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _magazineSize
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8a07e492c7108834f98bdb967750b758, type: 3}

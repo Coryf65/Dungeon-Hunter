@@ -203,8 +203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 662bb820180b37b42aaef23b410104f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedWeapon: {fileID: 9096772232775439982, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
-  weaponHolderPosition: {fileID: 1319786069102280921}
+  _selectedWeapon: {fileID: 0}
+  _weaponHolderPosition: {fileID: 0}
 --- !u!1 &1319786067861396665
 GameObject:
   m_ObjectHideFlags: 0

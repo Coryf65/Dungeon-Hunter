@@ -93,11 +93,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7692112914440354323}
+  - component: {fileID: 1515038405779373034}
   - component: {fileID: 9096772232775439982}
   - component: {fileID: -1926886054894826657}
   - component: {fileID: -1901307610203029056}
   - component: {fileID: -240657526420728361}
-  - component: {fileID: 1515038405779373034}
   - component: {fileID: 6045812006041784488}
   m_Layer: 0
   m_Name: Weapon_MG
@@ -123,6 +123,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1515038405779373034
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7692112914440354320}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c04ad2cce74801f45826ccdd7c374869, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &9096772232775439982
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,26 +204,6 @@ MonoBehaviour:
   _objectPrefab: {fileID: 7105234472639514975, guid: f55144e8caa7ea145b46985b139e55ce, type: 3}
   _poolSize: 10
   _poolCanExpand: 1
---- !u!95 &1515038405779373034
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7692112914440354320}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c04ad2cce74801f45826ccdd7c374869, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &6045812006041784488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e45a4bd64f904242ad9230d80eb25e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canDestroyItem: 1
   weaponData: {fileID: 0}
 --- !u!1001 &1324096640954106620
 PrefabInstance:

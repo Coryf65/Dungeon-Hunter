@@ -57,7 +57,6 @@ public class SpriteFlip : CharacterComponent
     /// </summary>
     private void FlipToWeaponDirection()
     {
-        // 
         if (characterWeapon != null)
         {
             float weaponAngle = characterWeapon.WeaponAim.CurrentAimAngleAbsolute;

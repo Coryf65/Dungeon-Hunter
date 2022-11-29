@@ -83,6 +83,11 @@ public class SingleShotWeapon : Weapon
     /// </summary>
     private void CalculateProjectileSpawns()
     {
+        if (WeaponUser.GetComponent<SpriteFlip>() == null)
+        {
+            return;
+        }
+
         if (WeaponUser.GetComponent<SpriteFlip>().FacingRight)
         {
             ProjectileSpawnPoint = transform.position + transform.rotation * _projectileSpawnPoint;

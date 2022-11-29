@@ -31,6 +31,14 @@ PrefabInstance:
       propertyPath: _magazineSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -240657526420728361, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: _objectPrefab
+      value: 
+      objectReference: {fileID: 7105234472639514975, guid: a872111eb53707c48a05fe02b6c461ab, type: 3}
+    - target: {fileID: 6045812006041784488, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
+      propertyPath: weaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: f9abcbcc12cfbcc489d80bea66d40144, type: 2}
     - target: {fileID: 7692112912820296406, guid: 8a07e492c7108834f98bdb967750b758, type: 3}
       propertyPath: m_Sprite
       value: 

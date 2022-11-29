@@ -4,10 +4,11 @@ using UnityEngine;
 public class CharacterWeapon : CharacterComponent
 {
     [Header("Weapon Settings")]
-    [SerializeField] private Weapon selectedWeapon;
-    [SerializeField] private Transform weaponHolderPosition;
+    [SerializeField] private Weapon _selectedWeapon;
+    [SerializeField] private Transform _weaponHolderPosition;
     public static Action OnStartShooting;
     public Weapon CurrentWeapon { get; set; }
+    public Weapon SecondaryWeapon { get; set; }
     public WeaponAim WeaponAim { get; set; }
 
     /// <summary>
@@ -16,7 +17,7 @@ public class CharacterWeapon : CharacterComponent
     protected override void Start()
     {
         base.Start();
-        EquipWeapon(selectedWeapon, weaponHolderPosition);
+        EquipWeapon(_selectedWeapon, _weaponHolderPosition);
     }
 
     /// <summary>
@@ -25,7 +26,7 @@ public class CharacterWeapon : CharacterComponent
     protected override void HandleInput()
     {
         // shoot, left click
-        if (Input.GetMouseButtonDown(0) || Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)) //Input.GetMouseButtonDown(0) || 
         {
             Shoot();
         }
@@ -40,6 +41,18 @@ public class CharacterWeapon : CharacterComponent
         {
             Reload();
         }
+
+        // Primary Weapon, 1
+        if (Input.GetKeyDown(KeyCode.Alpha1) && SecondaryWeapon != null)
+        {
+            EquipWeapon(_selectedWeapon, _weaponHolderPosition);
+        }
+
+        // Secondary Weapon, 2
+        if (Input.GetKeyDown(KeyCode.Alpha2) && SecondaryWeapon != null)
+        {
+            EquipWeapon(SecondaryWeapon, _weaponHolderPosition);
+        }
     }
 
     /// <summary>
@@ -48,9 +61,7 @@ public class CharacterWeapon : CharacterComponent
     public void Shoot()
     {
         if (CurrentWeapon == null)
-        {
             return;
-        }
 
         CurrentWeapon.WeaponShot();
 
@@ -68,9 +79,7 @@ public class CharacterWeapon : CharacterComponent
     public void Reload()
     {
         if (CurrentWeapon == null)
-        {
             return;
-        }
 
         CurrentWeapon.Reload();
 
@@ -82,10 +91,8 @@ public class CharacterWeapon : CharacterComponent
 
     public void StopWeapon()
     {
-        if (CurrentWeapon == null)
-        {
+        if (CurrentWeapon == null) 
             return;
-        }
 
         CurrentWeapon.StopWeapon();
     }
@@ -94,9 +101,16 @@ public class CharacterWeapon : CharacterComponent
     /// Equip the selected weapon
     /// </summary>
     /// <param name="weapon">Weapon to use</param>
-    /// <param name="position">Where to Spawn our weapon</param>
+    /// <param name="weaponPosition">Where to Spawn our weapon</param>
     public void EquipWeapon(Weapon weapon, Transform weaponPosition)
     {
+        if (CurrentWeapon != null)
+        {
+            WeaponAim.DestroyReticle();
+            Destroy(GameObject.Find("Pooled Objects"));
+            Destroy(CurrentWeapon.gameObject);
+        }
+
         CurrentWeapon = Instantiate(weapon, weaponPosition.position, weaponPosition.rotation);
         CurrentWeapon.transform.parent = weaponPosition; // setting it as a child
         CurrentWeapon.SetOwner(character);
@@ -106,6 +120,7 @@ public class CharacterWeapon : CharacterComponent
         if (character.CharacterType == Character.CharacterTypes.Player)
         {
             UIManager.Instance.UpdateAmmo(CurrentWeapon.CurrentAmmo, CurrentWeapon.MagazineSize);
+            UIManager.Instance.UpdateWeaponSprite(CurrentWeapon.gameObject.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite);
         }
     }
 }

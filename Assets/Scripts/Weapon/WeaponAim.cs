@@ -100,4 +100,9 @@ public class WeaponAim : MonoBehaviour
             transform.rotation = _initialRotation;
         }
     }
+
+    public void DestroyReticle()
+    {
+        Destroy(_reticle.gameObject);
+    }
 }

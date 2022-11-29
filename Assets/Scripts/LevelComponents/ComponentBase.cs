@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class ComponentBase : MonoBehaviour
@@ -12,6 +13,9 @@ public class ComponentBase : MonoBehaviour
     private Health _health;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider2D;
+
+    // acessor
+    public event EventHandler OnJarBroken;    
 
     void Start()
     {
@@ -47,6 +51,8 @@ public class ComponentBase : MonoBehaviour
             else
             {
                 _spriteRenderer.sprite = _damagedSprite;
+                // Jar broken
+                OnJarBroken?.Invoke(this, EventArgs.Empty);
                 _collider2D.enabled = false;
             }
         }

@@ -49,6 +49,9 @@ TagManager:
   - name: LevelComponents
     uniqueID: 1573182937
     locked: 0
+  - name: NPC
+    uniqueID: 4059140945
+    locked: 0
   - name: Player
     uniqueID: 2138695527
     locked: 0

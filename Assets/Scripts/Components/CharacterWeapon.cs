@@ -106,6 +106,7 @@ public class CharacterWeapon : CharacterComponent
     {
         if (CurrentWeapon != null)
         {
+            CurrentWeapon.WeaponAmmo.SaveAmmo();
             WeaponAim.DestroyReticle();
             Destroy(GameObject.Find("Pooled Objects"));
             Destroy(CurrentWeapon.gameObject);

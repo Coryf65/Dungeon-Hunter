@@ -3,6 +3,7 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     [Header("settings")]
+    [SerializeField] private string _weaponName = string.Empty;
     [Tooltip("The Time between shots. How long between each shot will take.")]
     [Range(0f, 10f)]
     [SerializeField] private float _fireRate = 0.5f;    
@@ -26,6 +27,7 @@ public class Weapon : MonoBehaviour
     private Animator _animator;
     private readonly int _weaponUse = Animator.StringToHash(name: "WeaponUse");
 
+    public string WeaponName => _weaponName;
     public Character WeaponUser { get; set; }
     public WeaponAmmo WeaponAmmo { get; set; }
     public int CurrentAmmo { get; set; }
@@ -38,7 +40,8 @@ public class Weapon : MonoBehaviour
     {
         WeaponAmmo = GetComponent<WeaponAmmo>();
         _animator = GetComponent<Animator>();
-        CurrentAmmo = _magazineSize;
+
+        // load ammo for the weapon
     }
 
     protected virtual void Update()

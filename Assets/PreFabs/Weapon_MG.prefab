@@ -155,6 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b551aad22ce94d342a725d75b911bd57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _weaponName: LMG
   _fireRate: 0.1
   _hasMagazine: 1
   _magazineSize: 30

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ba33b641c5ea742821a881073fcc8d, type: 3}
   m_Name: ShopShieldItem
   m_EditorClassIdentifier: 
-  ItemName: ShieldPot
+  ItemName: Shield
   ItemCollectable: {fileID: 9134830503790968074, guid: b96b4ef369c6e294f9a5b5db45ea8ffd, type: 3}
   WeaponToSell: {fileID: 0}
   Cost: 50

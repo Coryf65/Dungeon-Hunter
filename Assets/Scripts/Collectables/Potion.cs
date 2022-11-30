@@ -18,7 +18,7 @@ public class Potion : Collectables
         Instantiate(_effects, transform.position, Quaternion.identity);
     }
 
-    private void AddHealth()
+    public void AddHealth()
     {
         if (_character != null)
         {

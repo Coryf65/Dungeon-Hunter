@@ -12,12 +12,18 @@ public class Shield : Collectables
         AddShield();
     }
 
+    /// <summary>
+    /// Play FX
+    /// </summary>
     protected override void PlayEffects()
     {
         Instantiate(_effect, transform.position, Quaternion.identity);
     }
 
-    private void AddShield()
+    /// <summary>
+    /// Adds Shield to the player
+    /// </summary>
+    public void AddShield()
     {
         _character.GetComponent<Health>().GainShield(_shieldAmount);
     }

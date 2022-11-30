@@ -8095,6 +8095,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: edb0209b5a2392043957abb9c162e8db, type: 2}
   - {fileID: 11400000, guid: ff840599dfdb0c54793e9da7a621b778, type: 2}
   - {fileID: 11400000, guid: 435655622af64bd419afe036f37acf9d, type: 2}
+  _potion: {fileID: 7181547769936303224, guid: 45191300a74c06d44b2ca1afb89984b4, type: 3}
+  _shield: {fileID: 9134830503790968074, guid: b96b4ef369c6e294f9a5b5db45ea8ffd, type: 3}
 --- !u!4 &917027369 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1319786067789561623, guid: 0a9d51211ae0d554aa3533b4688681fb, type: 3}

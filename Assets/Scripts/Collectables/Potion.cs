@@ -13,12 +13,18 @@ public class Potion : Collectables
     {
         AddHealth();
     }
-
+    
+    /// <summary>
+    /// Play effects to the pickup
+    /// </summary>
     protected override void PlayEffects()
     {
         Instantiate(_effects, transform.position, Quaternion.identity);
     }
 
+    /// <summary>
+    /// Add health to the attached player
+    /// </summary>
     public void AddHealth()
     {
         if (_character != null)
@@ -27,6 +33,10 @@ public class Potion : Collectables
         }
     }
 
+    /// <summary>
+    /// add health to the player character passed in
+    /// </summary>
+    /// <param name="character">the player character to give health</param>
     public void AddHealth(Character character)
     {
         if (character != null)

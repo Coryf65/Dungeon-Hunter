@@ -29,6 +29,10 @@ public class Shield : Collectables
         _character.GetComponent<Health>().GainShield(_shieldAmount);
     }
 
+    /// <summary>
+    /// Add shield to the player passed in
+    /// </summary>
+    /// <param name="character"></param>
     internal void AddShield(Character character)
     {
         character.GetComponent<Health>().GainShield(_shieldAmount);

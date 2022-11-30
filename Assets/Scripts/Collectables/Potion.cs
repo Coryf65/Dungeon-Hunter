@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Potion : Collectables
@@ -23,6 +24,14 @@ public class Potion : Collectables
         if (_character != null)
         {
             _character.GetComponent<Health>().GainHealth(_healAmount);
+        }
+    }
+
+    public void AddHealth(Character character)
+    {
+        if (character != null)
+        {
+            character.GetComponent<Health>().GainHealth(_healAmount);
         }
     }
 }

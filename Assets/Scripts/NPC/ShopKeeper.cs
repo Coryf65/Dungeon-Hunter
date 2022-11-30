@@ -95,13 +95,13 @@ public class ShopKeeper : MonoBehaviour
 
         if (itemName == "Health")
         {
-            _potion.AddHealth();
+            _potion.AddHealth(_character);
             CoinManager.Instance.RemoveCoins(item.Cost);
         }
 
         if (itemName == "Shield")
         {
-            _shield.AddShield();
+            _shield.AddShield(_character);
             CoinManager.Instance.RemoveCoins(item.Cost);
         }
     }

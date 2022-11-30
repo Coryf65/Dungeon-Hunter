@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Shield : Collectables
@@ -26,5 +27,10 @@ public class Shield : Collectables
     public void AddShield()
     {
         _character.GetComponent<Health>().GainShield(_shieldAmount);
+    }
+
+    internal void AddShield(Character character)
+    {
+        character.GetComponent<Health>().GainShield(_shieldAmount);
     }
 }
